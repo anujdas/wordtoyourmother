@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309052831) do
+ActiveRecord::Schema.define(:version => 20120309094035) do
 
   create_table "devices", :force => true do |t|
     t.text    "identifier"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120309052831) do
     t.float    "accuracy"
     t.datetime "time"
     t.integer  "device_id"
+    t.integer  "rssi"
   end
 
   add_index "locations", ["device_id"], :name => "device_id_index"
