@@ -40,7 +40,7 @@ function map_points() {
   for (var i = tbl_settings._iDisplayEnd; i >= tbl_settings._iDisplayStart; i--) {
     var l = loc_history[loc_history.length - 1 - i].location;
     map_canvas.gmap('addMarker', {'position': l.lat + ',' + l.lng, 'bounds' : false}).click(function() {
-      map_canvas.gmap('openInfoWindow', {'content': 'Found here at ' + l.time + ' with signal strength ' + l.rssi + ' dB.'}, this);
+      map_canvas.gmap('openInfoWindow', {'content': 'Found here at ' + (l.time ? l.time.replace(/[TZ]/g, ' ') : l.time) + ' with signal strength ' + l.rssi + ' dB.'}, this);
     });
   }
 }
