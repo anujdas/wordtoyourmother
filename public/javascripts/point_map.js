@@ -32,21 +32,19 @@ function draw_points() {
 }
 
 function map_points() {
-  $('#map_canvas').gmap('clear', 'markers');
-  loc_history.forEach( function(loc) {
-    var l = loc.location;
-    $('#map_canvas').gmap('addMarker', {'position': l.lat+','+l.lng}).click(function() {
-      $('#map_canvas').gmap('openInfoWindow', {'content': 'Found here at ' + l.time + 'with signal strength ' + l.rssi + 'dB.'}, this);
-    });
-  });
+  var map_canvas = $('#map_canvas');
+  var tbl_settings = $('#location_history').dataTable().fnSettings();
 
-  var l = loc_history[loc_history.length-1].location;
-  $('#map_canvas').gmap('addMarker', {'position': l.lat+','+l.lng, 'bounds': true}).click(function() {
-    $('#map_canvas').gmap('openInfoWindow', {'content': 'Found here at ' + l.time + 'with signal strength ' + l.rssi + 'dB.'}, this);
-  });
+  map_canvas.gmap('clear', 'markers');
+  for (var i = tbl_settings._iDisplayEnd; i >= tbl_settings._iDisplayStart; i--) {
+    var l = loc_history[i].location;
+    map_canvas.gmap('addMarker', {'position': l.lat+','+l.lng}).click(function() {
+      map_canvas.gmap('openInfoWindow', {'content': 'Found here at ' + l.time + ' with signal strength ' + l.rssi + ' dB.'}, this);
+    });
+  }
 }
 
 function init_elements() {
-  $('#map_canvas').gmap();
+  $('#map_canvas').gmap({'zoom': 14});
   update_points();
 }
