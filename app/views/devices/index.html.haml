@@ -12,5 +12,5 @@
         %tr
           %td!= d.identifier
           %td!= link_to d.locations.length, device_locations_path(d.identifier)
-          %td!= d.locations.empty? ? "Never" : d.locations.last.time
+          %td!= d.locations.empty? ? "Never" : time_ago_in_words(d.locations.last.time, true)
 
