@@ -23,6 +23,7 @@ class DevicesController < ApplicationController
   def show
     if !params[:id].blank?
       @device = Device.find_by_identifier(params[:id])
+      @locations = @device.locations
 
       respond_to do |format|
         format.html

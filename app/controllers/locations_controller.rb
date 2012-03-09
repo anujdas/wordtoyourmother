@@ -1,5 +1,11 @@
 class LocationsController < ApplicationController
   def index
+    @device = Device.find_by_identifier(params[:device_id])
+    @locations = @device.locations
+    respond_to do |format|
+      format.html
+      format.json { render :json => @locations }
+    end
   end
 
   def create

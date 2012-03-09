@@ -4,20 +4,7 @@
   %br!= "locate enabled: #{@device.locate_enabled}"
   %br!= "# of locations: #{@device.locations.size}"
   %p
-    %table
-      %thead
-        %tr
-          %th Time
-          %th Latitude
-          %th Longitude
-          %th RSSI
-      %tbody
-        - @device.locations.each do |l|
-          %tr
-            %td!= link_to l.time.to_s, device_location_path(@device.identifier, l)
-            %td!= l.lat
-            %td!= l.lng
-            %td!= l.rssi
+    != render :partial => 'locations/location_history'
 - else 
   No such device
 

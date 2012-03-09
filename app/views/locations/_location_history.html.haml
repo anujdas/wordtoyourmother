@@ -1,0 +1,14 @@
+%table
+  %thead
+    %tr
+      %th Time
+      %th Latitude
+      %th Longitude
+      %th RSSI
+  %tbody
+    - @locations.each do |l|
+      %tr
+        %td!= link_to l.time.to_s, device_location_path(@device.identifier, l)
+        %td!= l.lat
+        %td!= l.lng
+        %td!= l.rssi

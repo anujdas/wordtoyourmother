@@ -3,10 +3,10 @@
   %thead
     %tr
       %th Identifier
-      %th Track?
+      %th Last connection
   %tbody
     - @devices.each do |d|
       %tr
         %td!= d.identifier
-        %td!= d.locate_enabled
+        %td!= d.locations.empty? ? "Never" : d.locations.last.time
 
