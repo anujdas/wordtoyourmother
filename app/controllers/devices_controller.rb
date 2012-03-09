@@ -10,13 +10,13 @@ class DevicesController < ApplicationController
 
   def create
     if !params[:identifier].blank?
-      d = Device.new
-      d.identifier = params[:identifier]
-      d.locate_enabled = false
+      @device = Device.new
+      @device.identifier = params[:identifier]
+      @device.locate_enabled = false
     end
     respond_to do |format|
-      format.html
-      format.json { render :json => @devices }
+      format.html { render :nothing => true }
+      format.json { render :json => @device }
     end
   end
 

@@ -1,6 +1,7 @@
 %h2 Device:
 - if @device
   %br!= "identifier: #{@device.identifier}"
+  %br!= "locate enabled: #{@device.locate_enabled}"
   %br!= "# of locations: #{@device.locations.size}"
   %p
     %table
@@ -9,12 +10,14 @@
           %th Time
           %th Latitude
           %th Longitude
+          %th RSSI
       %tbody
         - @device.locations.each do |l|
           %tr
-            %td!= link_to l.time.to_s, location_path(l)
+            %td!= link_to l.time.to_s, device_location_path(@device.identifier, l)
             %td!= l.lat
             %td!= l.lng
+            %td!= l.rssi
 - else 
   No such device
 
