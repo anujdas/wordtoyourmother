@@ -4,17 +4,21 @@ class LocationsController < ApplicationController
 
   def create
     if !params[:device_id].blank?
-      d = Device.find_by_identifier(params[:device_id])
-      if d
-        @location = Location.new
-        @location.lat = params[:lat]
-        @location.lng = params[:lng]
-        @location.accuracy = params[:accuracy]
-        @location.rssi = params[:rssi]
-        @location.time = Time.now
-        @location.device = d
-        @location.save!
+      @device = Device.find_by_identifier(params[:device_id])
+      if @device.nil?
+        @device = Device.new
+        @device.identifier = params[:identifier]
+        @device.locate_enabled = false
+        @device.save!
       end
+      @location = Location.new
+      @location.lat = params[:lat]
+      @location.lng = params[:lng]
+      @location.accuracy = params[:accuracy]
+      @location.rssi = params[:rssi]
+      @location.time = Time.now
+      @location.device = d
+      @location.save!
     end
     respond_to do |format|
       format.html { render :nothing => true }
