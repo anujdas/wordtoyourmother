@@ -1,5 +1,48 @@
+body {
+  background-color: black;
+}
+body, td {
+  font-family: helvetica;
+  color: #9B2E4B;
+}
+
+#devices
+{
+  width: 25%;
+  text-align: center;
+  margin: 200px auto 0;
+  background-color: #B4C793;
+  padding: 10px;
+  border-radius: 15px;
+}
+#devices table
+{
+  margin: 0px auto;
+}
+#devices td
+{
+  text-align: center;
+}
+
+#locations
+{
+  width: 75%;
+  text-align: center;
+  margin: 30px auto;
+  background-color: #B4C793;
+  padding: 10px 10px 22px;
+  border-radius: 15px;
+}
+
+#locations table
+{
+  border-collapse: collapse;
+}
+
+
 #map_canvas
 {
   width:100%;
-  height:400px;
+  height:350px;
+  margin-bottom: 15px;
 }

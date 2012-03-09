@@ -1,12 +1,16 @@
-%h2 Known devices
-%table
-  %thead
-    %tr
-      %th Identifier
-      %th Last connection
-  %tbody
-    - @devices.each do |d|
+!= stylesheet_link_tag "main"
+#devices
+  %h2 Known devices
+  %table
+    %thead
       %tr
-        %td!= d.identifier
-        %td!= d.locations.empty? ? "Never" : d.locations.last.time
+        %th Identifier
+        %th Locations
+        %th Last connection
+    %tbody
+      - @devices.each do |d|
+        %tr
+          %td!= d.identifier
+          %td!= link_to d.locations.length, device_locations_path(d.identifier)
+          %td!= d.locations.empty? ? "Never" : d.locations.last.time
 

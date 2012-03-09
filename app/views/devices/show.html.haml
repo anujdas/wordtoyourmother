@@ -2,7 +2,7 @@
 - if @device
   %br!= "identifier: #{@device.identifier}"
   %br!= "locate enabled: #{@device.locate_enabled}"
-  %br!= "# of locations: #{@device.locations.size}"
+  %br!= link_to "# of locations: #{@device.locations.size}", device_location_path(@device.identifier, nil)
   %p
     != render :partial => 'locations/location_history'
 - else 

@@ -15,7 +15,8 @@ function update_points() {
 function draw_points() {
   var parsed_history = $.map(loc_history, function(loc, i) {
     var l = loc.location;
-    return [[l.time, l.lat, l.lng, l.rssi]];
+    var d = l.time ? l.time.replace(/[TZ]/g, ' ') : l.time;
+    return [[d, l.lat, l.lng, l.rssi]];
   });
 
   $('#location_history').dataTable( {
