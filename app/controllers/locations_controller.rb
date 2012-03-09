@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
       @location.accuracy = params[:accuracy]
       @location.rssi = params[:rssi]
       @location.time = Time.now
-      @location.device = d
+      @location.device = @device
       @location.save!
     end
     respond_to do |format|
