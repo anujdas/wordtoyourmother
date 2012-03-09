@@ -1,0 +1,12 @@
+%h2 Known devices
+%table
+  %thead
+    %tr
+      %th Identifier
+      %th Track?
+  %tbody
+    - @devices.each do |d|
+      %tr
+        %td!= d.identifier
+        %td!= d.locate_enabled
+

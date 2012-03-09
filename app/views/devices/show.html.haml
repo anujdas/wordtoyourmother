@@ -1,0 +1,20 @@
+%h2 Device:
+- if @device
+  %br!= "identifier: #{@device.identifier}"
+  %br!= "# of locations: #{@device.locations.size}"
+  %p
+    %table
+      %thead
+        %tr
+          %th Time
+          %th Latitude
+          %th Longitude
+      %tbody
+        - @device.locations.each do |l|
+          %tr
+            %td!= link_to l.time.to_s, location_path(l)
+            %td!= l.lat
+            %td!= l.lng
+- else 
+  No such device
+
